@@ -1,0 +1,31 @@
+pull_request_rules:
+  - name: remove outdated reviews
+    conditions:
+      - base=master
+    actions:
+      dismiss_reviews:
+        approved: true
+        changes_requested: true
+  - name: automatic merge for github-actions bot
+    conditions:
+      - author=github-actions[bot]
+      - status-success=Test Build
+      - status-success=PRLint
+      - base=master
+    actions:
+      merge:
+        method: squash
+        strict: smart
+  - name: automatic merge on CI success and review
+    conditions:
+      - status-success=Test Build
+      - status-success=PRLint
+      - "#approved-reviews-by>=1"
+      - "#review-requested=0"
+      - "#changes-requested-reviews-by=0"
+      - "#commented-reviews-by=0"
+      - base=master
+    actions:
+      merge:
+        method: squash
+        strict: smart
