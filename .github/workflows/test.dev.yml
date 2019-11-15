@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   handle-skip-ci:
-    name: Handle Skip CI
+    name: Test Build
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, '[skip ci]')"
     steps:
@@ -34,5 +34,11 @@ jobs:
       run: npm run lint
     - name: Run test
       run:  npm run test -- --coverage
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.0.3
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
+        flags: unittests
     - name: Test build release
       run: npm run build
+
