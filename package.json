@@ -1,6 +1,6 @@
 {
   "name": "gmail-cleaner",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "quickly delete Gmail emails matching specific label and search query",
   "author": "mmta",
   "license": "MIT",
