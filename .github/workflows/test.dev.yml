@@ -1,0 +1,38 @@
+name: Dev
+on:
+  push:
+    branches-ignore:
+      - master
+jobs:
+  handle-skip-ci:
+    name: Handle Skip CI
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - run: echo "Skipping CI because of this commit message = ${{ github.event.head_commit.message }}"
+  test-build:
+    name: Test Build
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-build-${{ env.cache-name }}-
+          ${{ runner.OS }}-build-
+          ${{ runner.OS }}-
+    - name: Install dependencies
+      run: npm ci
+    - name: Run lint
+      run: npm run lint
+    - name: Run test
+      run:  npm run test -- --coverage
+    - name: Test build release
+      run: npm run build

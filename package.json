@@ -1,0 +1,42 @@
+{
+  "name": "gmail-cleaner",
+  "version": "0.1.0",
+  "description": "quickly delete Gmail emails matching specific label and search query",
+  "author": "mmta",
+  "license": "MIT",
+  "main": "gmail_cleaner.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ./",
+    "build": "pkg gmail_cleaner.js --out-path dist/",
+    "zip-linux": "cd dist && npx bestzip ./gmail_cleaner-linux.zip ./gmail_cleaner-linux",
+    "zip-win": "cd dist && npx bestzip ./gmail_cleaner-windows.zip ./gmail_cleaner-win.exe",
+    "zip-osx": "cd dist && npx bestzip ./gmail_cleaner-darwin.zip ./gmail_cleaner-macos",
+    "zip": "npm run zip-linux && npm run zip-win && npm run zip-osx"
+  },
+  "pkg": {
+    "assets": [
+      "./lib/client_id.json"
+    ]
+  },
+  "dependencies": {
+    "googleapis": "^45.0.0",
+    "readline": "^1.3.0",
+    "table": "^5.4.6",
+    "yargs": "^14.2.0"
+  },
+  "devDependencies": {
+    "bdd-stdin": "^0.2.0",
+    "bestzip": "^2.1.5",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
+    "pkg": "^4.4.0",
+    "tmp": "^0.1.0"
+  }
+}

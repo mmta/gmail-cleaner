@@ -1,0 +1,5 @@
+.vscode/*
+node_modules
+gmail_token.json
+dist
+coverage

@@ -1,0 +1,27 @@
+name: Update Dev Dependencies
+on:
+  schedule:
+    - cron:  '0 11 * * *'
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Update dependencies
+        id: vars
+        run: |
+          npm install -g npm-check-updates
+          ncu -u --dep dev
+          npm install
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'ci: update dev dependencies'
+          title: 'ci: update dev dependencies'
+          body: This is an auto-generated PR for dependency updates [skip ci].
+          branch: dev-dep-updates
+          branch-suffix: none
