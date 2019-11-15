@@ -16,6 +16,16 @@ pull_request_rules:
       merge:
         method: squash
         strict: smart
+  - name: automatic merge for maintainer
+    conditions:
+      - author=mmta
+      - status-success=Test Build
+      - status-success=PRLint
+      - base=master
+    actions:
+      merge:
+        method: squash
+        strict: smart
   - name: automatic merge on CI success and review
     conditions:
       - status-success=Test Build
