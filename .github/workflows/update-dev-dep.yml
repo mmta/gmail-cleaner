@@ -4,6 +4,7 @@ on:
     - cron:  '0 11 * * *'
 jobs:
   update-deps:
+    name: Update Dev Deps
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
