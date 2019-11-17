@@ -6,10 +6,29 @@ pull_request_rules:
       dismiss_reviews:
         approved: true
         changes_requested: true
-  - name: automatic merge for github-actions bot
+  - name: automatic merge for github-actions bot - dev dependencies
     conditions:
       - author=github-actions[bot]
-      - status-success=Test Build
+      - status-success=Update Dev Deps
+      - status-success=PRLint
+      - base=master
+    actions:
+      merge:
+        method: squash
+        strict: smart
+  - name: automatic merge for github-actions bot - prod dependencies
+    conditions:
+      - author=github-actions[bot]
+      - status-success=Update Prod Deps
+      - status-success=PRLint
+      - base=master
+    actions:
+      merge:
+        method: squash
+        strict: smart
+  - name: automatic merge for github-actions bot - package-json
+    conditions:
+      - author=github-actions[bot]
       - status-success=PRLint
       - base=master
     actions:
