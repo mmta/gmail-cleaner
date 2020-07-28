@@ -27,11 +27,11 @@
   },
   "devDependencies": {
     "bdd-stdin": "^0.2.0",
-    "bestzip": "^2.1.5",
+    "bestzip": "^2.1.6",
     "eslint": "^7.5.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.18.2",
+    "eslint-plugin-jest": "^23.19.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
