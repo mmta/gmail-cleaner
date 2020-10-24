@@ -28,7 +28,7 @@
   "devDependencies": {
     "bdd-stdin": "^0.2.0",
     "bestzip": "^2.1.7",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-standard": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.0",
