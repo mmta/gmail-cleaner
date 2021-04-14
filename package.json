@@ -22,7 +22,7 @@
   "dependencies": {
     "googleapis": "^71.0.0",
     "readline": "^1.3.0",
-    "table": "^6.0.9",
+    "table": "^6.1.0",
     "yargs": "^16.2.0"
   },
   "devDependencies": {
