@@ -26,6 +26,7 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
+    "axios": "^1.2.1",
     "bestzip": "^2.2.0",
     "cd": "^0.3.3",
     "eslint": "^6.7.0",
