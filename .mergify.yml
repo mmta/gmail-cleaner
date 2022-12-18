@@ -10,45 +10,36 @@ pull_request_rules:
     conditions:
       - author=github-actions[bot]
       - status-success=Update Dev Deps
-      - status-success=PRLint
       - base=master
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for github-actions bot - prod dependencies
     conditions:
       - author=github-actions[bot]
       - status-success=Update Prod Deps
-      - status-success=PRLint
       - base=master
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for github-actions bot - package-json
     conditions:
       - author=github-actions[bot]
-      - status-success=PRLint
       - base=master
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for maintainer
     conditions:
       - author=mmta
       - status-success=Test Build
-      - status-success=PRLint
       - base=master
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge on CI success and review
     conditions:
       - status-success=Test Build
-      - status-success=PRLint
       - "#approved-reviews-by>=1"
       - "#review-requested=0"
       - "#changes-requested-reviews-by=0"
@@ -57,7 +48,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: delete head branch after merge
     conditions: []
     actions:

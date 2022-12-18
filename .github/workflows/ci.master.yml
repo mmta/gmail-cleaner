@@ -19,15 +19,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '18'
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-build-${{ env.cache-name }}-
-          ${{ runner.OS }}-build-
-          ${{ runner.OS }}-
+        cache: 'npm'
     - name: Install dependencies
       run: npm ci
     - name: Run lint
@@ -50,7 +42,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Create PR
       if: steps.semantic.outputs.new_release_published == 'true'
-      uses: peter-evans/create-pull-request@v1
+      uses: peter-evans/create-pull-request@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'build: update version in package.json'
