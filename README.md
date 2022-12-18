@@ -1,7 +1,7 @@
 # Gmail Cleaner
-[![](https://github.com/mmta/gmail-cleaner/workflows/CI/badge.svg)](https://github.com/mmta/gmail-cleaner/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/mmta/gmail-cleaner/branch/master/graph/badge.svg?token=Ht6kHM61R9)](https://codecov.io/gh/mmta/gmail-cleaner) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
- [![](https://david-dm.org/mmta/gmail-cleaner.svg)](https://david-dm.org/mmta/gmail-cleaner.svg) [![GitHub license](https://img.shields.io/github/license/mmta/gmail-cleaner.svg)](https://github.com/mmta/gmail-cleaner/blob/master/LICENSE)
 
+[![](https://github.com/mmta/gmail-cleaner/workflows/CI/badge.svg)](https://github.com/mmta/gmail-cleaner/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/mmta/gmail-cleaner/branch/master/graph/badge.svg?token=Ht6kHM61R9)](https://codecov.io/gh/mmta/gmail-cleaner) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![](https://david-dm.org/mmta/gmail-cleaner.svg)](https://david-dm.org/mmta/gmail-cleaner.svg) [![GitHub license](https://img.shields.io/github/license/mmta/gmail-cleaner.svg)](https://github.com/mmta/gmail-cleaner/blob/master/LICENSE)
 
 Quickly peek, and permanently delete emails in Gmail that match specific label and search query.
 
@@ -97,11 +97,17 @@ $ ./gmail_cleaner-linux delete -h
 $ ./gmail_cleaner-linux emails -h
 ```
 
+As part of the authentication process, this program by default will temporarily open port 31338/tcp on localhost. You can use other port by specifying environment variable `GMAIL_CLEANER_PORT`, for example:
+
+```shell
+$ GMAIL_CLEANER_PORT=1337 ./gmail_cleaner.js labels
+```
+
 ## Authorisation and Security
 
 This program uses [Gmail API](https://developers.google.com/gmail/api) so you must authorise it first before it can access your Gmail account.
 
-On the first time access to Gmail, this program will fail to locate `gmail_token.json` file, and will fall back to display an authorisation URL. Open it in a browser, and follow the steps to authorise the program to access your account. Copying the token shown in the final page back to the prompt in your terminal will create a `gmail_token.json` file for future use, and allow the program execution to continue.
+On the first time access to Gmail, this program will fail to locate `gmail_token.json` file, and will fall back to display an authorisation URL. Open it in a browser, and follow the steps to authorise the program to access your account.
 
 After that first run, you should handle `gmail_token.json` file with care: anyone who has access to it will also have access to your Gmail account. Unless it is turned off with the `-s` switch, Gmail Cleaner will display the following security warning on every run.
 
