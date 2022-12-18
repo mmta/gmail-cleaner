@@ -36,7 +36,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.6.3",
-    "pkg": "^4.4.0",
+    "pkg": "^5.8.0",
     "tmp": "^0.1.0"
   }
 }
