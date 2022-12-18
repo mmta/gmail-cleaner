@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "gmail_cleaner.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --silent=false",
     "lint": "eslint ./",
     "build": "pkg gmail_cleaner.js --out-path dist/",
     "zip-linux": "cd dist && npx bestzip ./gmail_cleaner-linux.zip ./gmail_cleaner-linux",
@@ -26,8 +26,8 @@
     "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "bdd-stdin": "^0.2.0",
     "bestzip": "^2.2.0",
+    "cd": "^0.3.3",
     "eslint": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
