@@ -7,10 +7,11 @@ jobs:
     name: Update Prod Deps
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '10.x'
+          node-version: '18'
+          cache: 'npm'
       - name: Update dependencies
         id: vars
         run: |
@@ -19,7 +20,7 @@ jobs:
           npm install
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v1
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'fix: update dependencies'
