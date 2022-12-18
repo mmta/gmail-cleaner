@@ -15,7 +15,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for github-actions bot - prod dependencies
     conditions:
       - author=github-actions[bot]
@@ -25,7 +24,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for github-actions bot - package-json
     conditions:
       - author=github-actions[bot]
@@ -34,7 +32,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge for maintainer
     conditions:
       - author=mmta
@@ -44,7 +41,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: automatic merge on CI success and review
     conditions:
       - status-success=Test Build
@@ -57,7 +53,6 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-        strict: smart
   - name: delete head branch after merge
     conditions: []
     actions:
