@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "gmail_cleaner.js",
   "scripts": {
-    "test": "jest --silent=false",
+    "test": "jest --silent=false --runInBand --detectOpenHandles --forceExit",
     "lint": "eslint ./",
     "build": "pkg gmail_cleaner.js --out-path dist/",
     "zip-linux": "cd dist && npx bestzip ./gmail_cleaner-linux.zip ./gmail_cleaner-linux",
